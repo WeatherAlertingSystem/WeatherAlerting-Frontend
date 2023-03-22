@@ -1,0 +1,36 @@
+name: Angular Web App - CI/CD
+
+on:
+  push:
+    branches: ["master", "feature/first-deploy-to-s3"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  build:
+    name: Test, build and deploy 
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+      - name: Install npm dependencies
+        run: npm ci
+      - name: Build 
+        run: npm run build-prod
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::163636840347:role/GithubActionsFrontendBucketDeployer
+          aws-region: eu-central-1
+      - name: Deploy to S3 bucket
+        run: aws s3 sync ./dist s3://163636840347-weather-alerting-frontend
+
+
+    
