@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Test, build and deploy 
+    name: Test, build and deploy
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -22,7 +22,7 @@ jobs:
           cache: "npm"
       - name: Install npm dependencies
         run: npm ci
-      - name: Build 
+      - name: Build
         run: npm run build-prod
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -30,7 +30,4 @@ jobs:
           role-to-assume: arn:aws:iam::163636840347:role/GithubActionsFrontendBucketDeployer
           aws-region: eu-central-1
       - name: Deploy to S3 bucket
-        run: aws s3 sync ./dist s3://163636840347-weather-alerting-frontend
-
-
-    
+        run: aws s3 sync ./dist/weather-alerting-frontend/ s3://163636840347-weather-alerting-frontend
