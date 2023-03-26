@@ -95,11 +95,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "karmaConfig": "karma.conf.js"
           }
-        },
-        "deploy": {
-          "builder": "@jefiozie/ngx-aws-deploy:deploy"
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
