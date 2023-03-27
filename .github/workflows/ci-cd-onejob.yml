@@ -2,9 +2,10 @@ name: Angular Web App - CI/CD
 
 on:
   push:
-    branches: ["master", "feature/first-deploy-to-s3"]
+    branches: ["master"]
   pull_request:
     branches: ["master"]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -38,4 +39,4 @@ jobs:
           role-to-assume: arn:aws:iam::163636840347:role/GithubActionsFrontendBucketDeployer
           aws-region: eu-central-1
       - name: Deploy to S3 bucket
-        run: aws s3 sync ./dist/weather-alerting-frontend/ s3://163636840347-weather-alerting-frontend
+        run: aws s3 sync ./dist/weather-alerting-frontend/ s3://163636840347-weather-alerting-frontend --exclude assets/config.json
