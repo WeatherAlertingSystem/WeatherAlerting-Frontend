@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import config from '../assets/config.json';
 
@@ -8,9 +8,10 @@ import config from '../assets/config.json';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'WeatherAlerting-Frontend';
   backendUrl!: string;
+  backendResponse = '';
 
   constructor(private http: HttpClient) {
     this.getAssetConfigJson().subscribe({
@@ -20,7 +21,22 @@ export class AppComponent {
     });
   }
 
+  ngOnInit() {
+    console.log('Init');
+  }
+
   getAssetConfigJson(): Observable<typeof config> {
     return this.http.get<typeof config>('../assets/config.json');
+  }
+
+  testBackendConnection() {
+    this.http.get<string>(this.backendUrl).subscribe({
+      next: (res) => {
+        this.backendResponse = res;
+      },
+      error: (err) => {
+        this.backendResponse = err;
+      },
+    });
   }
 }
