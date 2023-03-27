@@ -1,1 +1,7 @@
 <h1>Welcome to Weather Alerting Service</h1>
+<h2>Backend Url: {{ backendUrl }}</h2>
+<button (click)="testBackendConnection()">Check backend connection</button>
+<div *ngIf="backendResponse !== ''" class="div">
+  Backend responded with: <br />
+  {{ backendResponse | json }}
+</div>
