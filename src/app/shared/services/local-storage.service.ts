@@ -6,6 +6,10 @@ export class LocalStorageService {
     this.setItem('access_token', token);
   }
 
+  public removeBearerToken() {
+    this.removeItem('access_token');
+  }
+
   public getBearerToken(): string | null {
     return this.getItem('access_token');
   }
@@ -16,5 +20,9 @@ export class LocalStorageService {
 
   public getItem(key: string): string | null {
     return localStorage.getItem(key);
+  }
+
+  public removeItem(key: string) {
+    return localStorage.removeItem(key);
   }
 }

@@ -13,7 +13,7 @@ const routes: Routes = [
         (m) => m.WeatherTriggersModule
       ),
   },
-  { path: '', component: SignUpComponent },
+  { path: '', component: SignInComponent },
 ];
 
 @NgModule({
