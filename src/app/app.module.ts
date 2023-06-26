@@ -10,9 +10,11 @@ import { httpInterceptorProviders } from './interceptors';
 import { SharedModule } from './shared/shared.module';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { HomeComponent } from './home/home.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  declarations: [AppComponent, SignUpComponent, SignInComponent],
+  declarations: [AppComponent, SignUpComponent, SignInComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,6 +22,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     NgbModule,
     SharedModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],

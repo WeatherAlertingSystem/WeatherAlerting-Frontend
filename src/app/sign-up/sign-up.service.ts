@@ -7,7 +7,7 @@ import { LocalStorageService } from '../shared/services/local-storage.service';
 @Injectable({
   providedIn: 'root',
 })
-export class SignInService {
+export class SignUpService {
   constructor(
     private readonly backendSvc: BackendService,
     private localStorage: LocalStorageService,
@@ -15,27 +15,17 @@ export class SignInService {
     private currentUserSvc: CurrentUserService
   ) {}
 
-  async signIn(login: string, password: string): Promise<void> {
+  signUp(login: string, email: string, password: string) {
     this.backendSvc
-      .post(Endpoints.SIGN_IN, { username: login, password })
+      .post(Endpoints.SIGN_UP, { username: login, email, password })
       .subscribe({
-        next: (tokenObj) => {
-          console.log(tokenObj);
-          this.localStorage.setBearerToken(tokenObj.access_token);
-          setTimeout(() => {
-            this.router.navigate(['/weather-trigger']);
-            this.currentUserSvc.getData();
-          }, 1000);
+        next: () => {
+          alert('Your account has been created sucessfully');
+          this.router.navigate(['/sign-in']);
         },
         error: (err) => {
           console.error(err);
         },
       });
-  }
-
-  signOut() {
-    this.localStorage.removeBearerToken();
-    this.currentUserSvc.clearUser();
-    this.router.navigate(['/']);
   }
 }

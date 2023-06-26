@@ -80,6 +80,7 @@ export class WeatherTriggerFormComponent implements OnInit {
     this.weatherTriggerSvc.createWeatherTrigger(this.form.value).subscribe({
       next: (newTrigger) => {
         console.log('Trigger created.', newTrigger);
+        window.location.reload();
       },
       error: (err) => {
         console.log('Trigger not created. Error: ', err);
@@ -106,6 +107,7 @@ export class WeatherTriggerFormComponent implements OnInit {
       .subscribe({
         next: (_) => {
           // this.awaitingSuccess = false;
+          window.location.reload();
         },
         error: (err) => {
           // this.awaitingSuccess = false;
@@ -128,6 +130,7 @@ export class WeatherTriggerFormComponent implements OnInit {
       .subscribe({
         next: (_) => {
           // this.awaitingSuccess = false;
+          window.location.reload();
         },
         error: (err) => {
           // this.awaitingSuccess = false;

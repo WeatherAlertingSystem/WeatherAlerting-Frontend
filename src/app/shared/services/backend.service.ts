@@ -6,9 +6,10 @@ import config from '../../../assets/config.json';
 // const prefix = (v = 1) => `/api/v${v}`;
 
 export enum Endpoints {
-  SIGN_UP = '/api/v1/sign-up',
+  SIGN_UP = '/api/v1/user',
   SIGN_IN = '/api/v1/auth',
   WEATHER_TRIGGER = '/api/v1/user/weather-trigger',
+  USER_ME = '/api/v1/user/me',
 }
 
 @Injectable({

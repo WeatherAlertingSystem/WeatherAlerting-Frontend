@@ -1,4 +1,4 @@
-<form action="">
+<form [formGroup]="signUpForm">
   <h4>Sign up</h4>
   <div class="mb-3">
     <label for="loginFormControlInput" class="form-label">Login</label>
@@ -7,6 +7,7 @@
       class="form-control"
       id="loginFormControlInput"
       placeholder="jondoe"
+      formControlName="login"
     />
   </div>
   <div class="mb-3">
@@ -16,11 +17,19 @@
       class="form-control"
       id="emailFormControlInput"
       placeholder="jondoe@example.com"
+      formControlName="email"
     />
   </div>
   <div class="mb-3">
     <label for="passwordFormControlInput" class="form-label">Password</label>
-    <input type="password" class="form-control" id="passwordFormControlInput" />
+    <input
+      type="password"
+      class="form-control"
+      id="passwordFormControlInput"
+      formControlName="password"
+    />
   </div>
-  <button type="button" class="btn btn-primary">Sign-up</button>
+  <button type="button" class="btn btn-primary" (click)="signUp()">
+    Sign-up
+  </button>
 </form>
