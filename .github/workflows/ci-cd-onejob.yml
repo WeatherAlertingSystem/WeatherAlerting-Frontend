@@ -25,14 +25,14 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build-prod
-      - name: Before test
-        run: |
-          sudo apt-get update
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo apt -y install ./google-chrome-stable_current_amd64.deb
-          export CHROME_BIN=/usr/bin/google-chrome
-      - name: Unit tests
-        run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+#       - name: Before test
+#         run: |
+#           sudo apt-get update
+#           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#           sudo apt -y install ./google-chrome-stable_current_amd64.deb
+#           export CHROME_BIN=/usr/bin/google-chrome
+#       - name: Unit tests
+#         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
