@@ -23,40 +23,17 @@ export class AlertComponent implements OnInit {
     this.alerts.push({ type, message });
   }
 
-  // @Input() type = 'danger';
-  // @Input() message = '';
-  // alerts: Array<{type:string, message:string}> = new Array<{type:string, message:string}>();
-  // constructor(
-  //   private readonly httpErrorService: HttpErrorService,
-  // ) {}
-
   ngOnInit() {
     this.httpErrorService.error$.subscribe((httpError) => {
       // login attempts limiter, display waiting time to user
       if (httpError) {
         this.addAlert(
           'danger',
-          `${httpError.statusCode} - ${httpError.error} - ${httpError.message}`
+          `${httpError.statusCode} - ${httpError.error || ''} - ${
+            httpError.message
+          }`
         );
       }
     });
   }
-
-  // addAlert(type, message){
-  //   this.alerts.push()
-  // }
-
-  // ngOnDestroy() {
-  //   this.httpErrorService.error$.unsubscribe();
-  //   // console.log('destroyed alert')
-  // }
-  // show(type: string, message: string): void {
-  //   this.type = type;
-  //   this.message = message;
-  // }
-  // closeAlert() {
-  //   // console.log('closed alert')
-  //   this.httpErrorService.clear();
-  //   // this.message = null;
-  // }
 }

@@ -105,18 +105,18 @@ export class WeatherTriggerFormComponent implements OnInit {
     }
     console.log('cleanedTrigger :>> ', cleanedTrigger);
 
-    // this.weatherTriggerSvc
-    //   .updateWeatherTrigger(this.weatherTrigger._id, cleanedTrigger)
-    //   .subscribe({
-    //     next: (_) => {
-    //       // this.awaitingSuccess = false;
-    //       window.location.reload();
-    //     },
-    //     error: (err) => {
-    //       // this.awaitingSuccess = false;
-    //       console.log(err);
-    //     },
-    //   });
+    this.weatherTriggerSvc
+      .updateWeatherTrigger(this.weatherTrigger._id, cleanedTrigger)
+      .subscribe({
+        next: (_) => {
+          // this.awaitingSuccess = false;
+          window.location.reload();
+        },
+        error: (err) => {
+          // this.awaitingSuccess = false;
+          console.log(err);
+        },
+      });
   }
 
   delete() {

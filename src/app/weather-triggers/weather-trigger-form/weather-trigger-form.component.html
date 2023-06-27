@@ -117,14 +117,20 @@
           />
         </div>
         <div class="col-2 mt-auto">
-          <button class="btn btn-danger" (click)="removeNotification(i)">
+          <button
+            class="btn btn-danger"
+            (click)="removeNotification(i); notifications.markAsDirty()"
+          >
             <fa-icon [icon]="faTrash"></fa-icon>
           </button>
         </div>
       </div>
     </ng-container>
     <div class="mt-3 float-right d-flex">
-      <button class="btn btn-primary ms-auto me-3" (click)="addNotification()">
+      <button
+        class="btn btn-primary ms-auto me-3"
+        (click)="addNotification(); notifications.markAsDirty()"
+      >
         <fa-icon [icon]="faPlus"></fa-icon>
       </button>
     </div>
