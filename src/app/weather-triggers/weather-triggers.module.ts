@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WeatherTriggerEditorModalComponent } from './weather-trigger-editor-modal/weather-trigger-editor-modal.component';
 import { WeatherTriggerFormComponent } from './weather-trigger-form/weather-trigger-form.component';
@@ -19,6 +20,7 @@ import { WeatherTriggersRoutingModule } from './weather-triggers-routing.module'
     WeatherTriggersRoutingModule,
     NgbModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   providers: [NgbActiveModal],
 })

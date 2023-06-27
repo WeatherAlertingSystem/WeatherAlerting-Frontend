@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import {
   NotificationChannels,
   WeatherNotification,
@@ -29,6 +30,8 @@ export class WeatherTriggerFormComponent implements OnInit {
   triggerConditions = Object.freeze(TriggerConditions);
   triggerOffsets = Object.freeze(TriggerOffsets);
   notificationChannels = Object.freeze(NotificationChannels);
+  faTrash = faTrash;
+  faPlus = faPlus;
   objectKeys = Object.keys;
   objectEntries = Object.entries;
   constructor(
@@ -102,18 +105,18 @@ export class WeatherTriggerFormComponent implements OnInit {
     }
     console.log('cleanedTrigger :>> ', cleanedTrigger);
 
-    this.weatherTriggerSvc
-      .updateWeatherTrigger(this.weatherTrigger._id, cleanedTrigger)
-      .subscribe({
-        next: (_) => {
-          // this.awaitingSuccess = false;
-          window.location.reload();
-        },
-        error: (err) => {
-          // this.awaitingSuccess = false;
-          console.log(err);
-        },
-      });
+    // this.weatherTriggerSvc
+    //   .updateWeatherTrigger(this.weatherTrigger._id, cleanedTrigger)
+    //   .subscribe({
+    //     next: (_) => {
+    //       // this.awaitingSuccess = false;
+    //       window.location.reload();
+    //     },
+    //     error: (err) => {
+    //       // this.awaitingSuccess = false;
+    //       console.log(err);
+    //     },
+    //   });
   }
 
   delete() {

@@ -25,8 +25,6 @@ export class SignInComponent implements OnInit {
     console.log('hello :>> ');
     const login = this.signInForm.get('login')?.value;
     const password = this.signInForm.get('password')?.value;
-    console.log('login :>> ', login);
-    console.log('password :>> ', password);
     if (!login || !password) return;
     this.signInService.signIn(login, password);
   }
