@@ -1,0 +1,16 @@
+<!-- <ngb-alert *ngIf="message" (closed)="closeAlert()" [type]="type">
+  <div>{{ message }}</div>
+</ngb-alert> -->
+
+<p *ngFor="let alert of alerts">
+  <ngb-alert [type]="alert.type" (closed)="close(alert)">{{
+    alert.message
+  }}</ngb-alert>
+</p>
+<!-- <div *ngIf="message" class="alert alert-{{type}} alert-dismissible fade show" role="alert">
+  <div class="alert-icon"><span class="visually-hidden">{{type}}</span></div>
+  <div>
+      <h4 class="alert-heading">{{message}}</h4>
+    </div>
+  <button type="button" class="btn-close" (click)="closeAlert()"><span class="visually-hidden">Close</span></button>
+</div> -->

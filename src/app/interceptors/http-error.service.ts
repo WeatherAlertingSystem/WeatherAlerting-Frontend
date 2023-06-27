@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { HttpError } from './http-error-interceptor.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HttpErrorService {
-  error$: Subject<string | null> = new Subject();
+  error$: Subject<HttpError | null> = new Subject();
 
   constructor(private readonly router: Router) {
     this.router.events.subscribe((event) => {
@@ -16,7 +17,7 @@ export class HttpErrorService {
     });
   }
 
-  error(error: any) {
+  error(error: HttpError) {
     this.error$.next(error);
   }
 
