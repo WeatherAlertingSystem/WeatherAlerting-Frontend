@@ -1,0 +1,138 @@
+<form [formGroup]="form">
+  <div class="form-group">
+    <label for="nameInput">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="nameInput"
+      aria-describedby="emailHelp"
+      placeholder="e.g. Frost-trigger"
+      formControlName="name"
+    />
+  </div>
+  <div class="form-group">
+    <label for="descriptionInput">Description</label>
+    <textarea
+      class="form-control"
+      id="descriptionInput"
+      rows="2"
+      formControlName="description"
+      placeholder="Optional"
+    ></textarea>
+  </div>
+  <div class="form-group">
+    <label for="locationInput">Location</label>
+    <input
+      type="text"
+      class="form-control"
+      id="locationInput"
+      aria-describedby="locationHelp"
+      placeholder="e.g. Wroclaw"
+      formControlName="location"
+    />
+  </div>
+  <div class="form-group">
+    <label for="offsetInput">Time offset</label>
+    <select id="offsetInput" class="form-control" formControlName="offset_time">
+      <option selected disabled value="">Choose...</option>
+      <option
+        *ngFor="let offset of objectEntries(triggerOffsets)"
+        [ngValue]="offset[1]"
+      >
+        {{ offset[0] }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group row">
+    <div class="col-6">
+      <label for="typeInput">Type</label>
+      <select id="typeInput" class="form-control" formControlName="type">
+        <option selected disabled value="">Choose...</option>
+        <option
+          *ngFor="let type of objectEntries(triggerTypes)"
+          [ngValue]="type[1]"
+        >
+          {{ type[0] }}
+        </option>
+      </select>
+    </div>
+    <div class="col-3">
+      <label for="conditionInput">Condition</label>
+      <select
+        id="conditionInput"
+        class="form-control"
+        formControlName="condition"
+      >
+        <option selected disabled value="">Choose...</option>
+        <option
+          *ngFor="let condition of objectEntries(triggerConditions)"
+          [ngValue]="condition[1]"
+        >
+          {{ condition[0] }}
+        </option>
+      </select>
+    </div>
+    <div class="col-3">
+      <label for="thresholdInput">Threshold</label>
+      <input
+        type="number"
+        class="form-control"
+        id="thresholdInput"
+        aria-describedby="thresholdHelp"
+        formControlName="threshold"
+      />
+    </div>
+  </div>
+  <div formArrayName="notification">
+    <label for="">Notifications</label>
+    <ng-container
+      *ngFor="let notification of notifications.controls; let i = index"
+    >
+      <div class="row ms-1" [formGroup]="$any(notification)">
+        <div class="col-3">
+          <label for="channelInput">Channel</label>
+          <select
+            id="channelInput"
+            class="form-control"
+            formControlName="channel"
+          >
+            <option selected disabled value="">Choose...</option>
+            <option
+              *ngFor="let channel of objectEntries(notificationChannels)"
+              [ngValue]="channel[1]"
+            >
+              {{ channel[0] }}
+            </option>
+          </select>
+        </div>
+        <div class="col-7">
+          <label for="recipientInput">Recipient</label>
+          <input
+            type="text"
+            class="form-control"
+            id="recipientInput"
+            aria-describedby="recipientHelp"
+            placeholder="youremail@example.com"
+            formControlName="recipient"
+          />
+        </div>
+        <div class="col-2 mt-auto">
+          <button
+            class="btn btn-danger"
+            (click)="removeNotification(i); notifications.markAsDirty()"
+          >
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+    <div class="mt-3 float-right d-flex">
+      <button
+        class="btn btn-primary ms-auto me-3"
+        (click)="addNotification(); notifications.markAsDirty()"
+      >
+        <fa-icon [icon]="faPlus"></fa-icon>
+      </button>
+    </div>
+  </div>
+</form>

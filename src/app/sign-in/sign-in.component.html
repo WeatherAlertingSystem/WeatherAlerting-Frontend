@@ -1,0 +1,23 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="signInForm">
+  <h4>Sign in</h4>
+  <div class="mb-3">
+    <label for="loginFormControlInput" class="form-label">Login</label>
+    <input
+      type="text"
+      class="form-control"
+      id="loginFormControlInput"
+      placeholder="jondoe"
+      formControlName="login"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="passwordFormControlInput" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="passwordFormControlInput"
+      formControlName="password"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>

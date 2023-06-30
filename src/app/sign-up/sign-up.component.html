@@ -1,0 +1,35 @@
+<form [formGroup]="signUpForm">
+  <h4>Sign up</h4>
+  <div class="mb-3">
+    <label for="loginFormControlInput" class="form-label">Login</label>
+    <input
+      type="text"
+      class="form-control"
+      id="loginFormControlInput"
+      placeholder="jondoe"
+      formControlName="login"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="emailFormControlInput" class="form-label">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="emailFormControlInput"
+      placeholder="jondoe@example.com"
+      formControlName="email"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="passwordFormControlInput" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="passwordFormControlInput"
+      formControlName="password"
+    />
+  </div>
+  <button type="button" class="btn btn-primary" (click)="signUp()">
+    Sign-up
+  </button>
+</form>

@@ -1,0 +1,50 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <ng-container *ngIf="mode === 0">
+      <h4 class="modal-title" id="modal-basic-title">Create Weather Trigger</h4>
+    </ng-container>
+    <ng-container *ngIf="mode === 1">
+      <h4 class="modal-title" id="modal-basic-title">Update Weather Trigger</h4>
+    </ng-container>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-weather-trigger-form
+      #form
+      [weatherTrigger]="weatherTrigger"
+      [mode]="mode"
+    ></app-weather-trigger-form>
+  </div>
+  <div class="modal-footer">
+    <ng-container *ngIf="mode === 0">
+      <button
+        type="button"
+        class="btn btn-outline-dark"
+        (click)="modal.close('Create click'); form.create()"
+      >
+        Create
+      </button>
+    </ng-container>
+    <div *ngIf="mode === 1" class="d-flex w-100 justify-content-between">
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="modal.close('Delete click'); form.delete()"
+      >
+        Delete
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-dark"
+        (click)="modal.close('Update click'); form.update()"
+      >
+        Update
+      </button>
+    </div>
+  </div>
+</ng-template>
